@@ -2,8 +2,11 @@ import React from 'react';
 
 export default function Form(props) {
 
-  // const values = props.values;
-  // const toChange = props.toChange;
+  
+  const clickSubmit = event => {
+    event.preventDefault()
+    props.submit()
+  }
 
   const change = event => {
     const name = event.target.name;
@@ -14,15 +17,20 @@ export default function Form(props) {
     props.toChange(name, valueToUse);
   }
 
-
-
-
-
-
   return (
-    <form>
+    <form onSubmit={clickSubmit}>
       <div>
         <h3>Required Info</h3>
+        <div>
+          <div>{props.errors.firstname}</div>
+          <div>{props.errors.lastname}</div>
+          <div>{props.errors.password}</div>
+          <div>{props.errors.email}</div>
+          <div>{props.errors.gender}</div>
+          <div>{props.errors.occupation}</div>
+          <div>{props.errors.relationship}</div>
+          <div>{props.errors.terms}</div>
+        </div>
         <label>First Name
           <input 
             name='firstname'
@@ -44,7 +52,7 @@ export default function Form(props) {
         <label>Password
         <input 
             name='password'
-            type='text'
+            type='password'
             onChange={change}
             value={props.values.password}
           />
@@ -192,6 +200,8 @@ export default function Form(props) {
             name='terms'
             type='radio'
             onChange={change}
+            value='theTerms'
+            checked={props.values.terms === 'theTerms'}
           />
         </label>
 
