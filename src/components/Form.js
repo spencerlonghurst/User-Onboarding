@@ -72,6 +72,7 @@ export default function Form(props) {
             name='gender'
             onChange={change}
             value={props.values.gender}
+            id='selectGender'
           >
             <option> -- Select your Gender-- </option>
             <option>Male</option>
@@ -85,6 +86,7 @@ export default function Form(props) {
             name='occupation'
             onChange={change}
             value={props.values.occupation}
+            id='selectOccupation'
           >
             <option>-- Select your occupation --</option>
             <option>Student</option>
@@ -202,10 +204,11 @@ export default function Form(props) {
             onChange={change}
             value='theTerms'
             checked={props.values.terms === 'theTerms'}
+            class='termsRadio'
           />
         </label>
 
-        <button>Submit</button>
+        <button id='submitButton'>Submit</button>
       </div>
     </form>
   )
